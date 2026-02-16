@@ -1,6 +1,6 @@
 # Volex TierTagger
 
-A Minecraft Fabric mod that displays player PvP tiers from [Volex TierList](https://volextierlist.vercel.app) directly in their nametags.
+A Minecraft Fabric mod that displays player PvP tiers from [Volex TierList](https://void-tierlist.vercel.app/rankings) directly in their nametags.
 
 ## Features
 
@@ -60,7 +60,7 @@ The mod creates a config file at `.minecraft/config/volex-tiertagger.json`:
 
 ## API Integration
 
-This mod integrates with the Volex TierList API at `https://volextierlist-api-b2s8.vercel.app` to fetch real-time player rankings.
+This mod integrates with the Volex TierList API at `https://volextl-api.vercel.app/api/players` to fetch real-time player rankings.
 
 ## Building from Source
 
