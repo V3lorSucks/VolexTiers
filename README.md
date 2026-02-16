@@ -76,7 +76,7 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Credits
 
-- Volex TierList Team
+- DrValor
 - [Tiers mod](https://github.com/Flavio6561/Tiers) - Gamemode texture icons
 - [TierTagger](https://github.com/mctiers-dev/TierTagger) - Search UI functionality
 - Fabric API
