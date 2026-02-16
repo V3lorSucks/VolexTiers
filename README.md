@@ -84,5 +84,5 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Links
 
-- [Volex TierList Website](https://volextierlist.vercel.app)
-- [Discord](https://discord.gg/1-21-central-tierlist-1207931735485186130)
+- [Volex TierList Website](https://void-tierlist.vercel.app/rankings)
+- [Discord](https://discord.gg/EdN3XArTrM)
