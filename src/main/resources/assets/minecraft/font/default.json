@@ -1,0 +1,60 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/vanilla.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE800"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/sword.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE801"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/pot.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE802"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/neth_op.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE803"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/uhc.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE804"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/axe.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE805"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/smp.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE806"]
+    },
+    {
+      "type": "bitmap",
+      "file": "ctl-tiertagger:font/mctiers/mace.png",
+      "height": 8,
+      "ascent": 8,
+      "chars": ["\uE807"]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.volextierlist.tiertagger.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "client-volex-tiertagger-refmap.json",
+  "client": [
+    "PlayerNametagMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

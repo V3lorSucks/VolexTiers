@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "volex-tiertagger",
+  "version": "${version}",
+  "name": "Volex TierTagger",
+  "description": "A Minecraft client mod by DrValor that displays player PvP tiers from Volex TierList directly in their nametags, enhancing gameplay experience with visual tier indicators for better strategic awareness.",
+  "authors": [
+    "DrValor"
+  ],
+  "contact": {
+    "homepage": "https://volex-tierlist.vercel.app/rankings",
+    "sources": "https://github.com/volextierlist/tiertagger"
+  },
+  "license": "MIT",
+  "icon": "assets/volex-tiertagger/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.volextierlist.tiertagger.VolexTierTaggerClient"
+    ],
+    "modmenu": [
+      "com.volextierlist.tiertagger.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "volex-tiertagger.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21.0 <=1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "modmenu": ">=11.0.3"
+  }
+}

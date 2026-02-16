@@ -1,0 +1,115 @@
+plugins {
+	id 'fabric-loom' version '1.9-SNAPSHOT'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	mavenCentral()
+	maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+	mods {
+		"volex-tiertagger" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+	
+	// Generate refmaps for mixins
+	mixin {
+		defaultRefmapName = "volex-tiertagger-refmap.json"
+	}
+}
+
+dependencies {
+	// Fabric
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// ModMenu for config GUI (compileOnly - users provide their own version)
+	modCompileOnly "com.terraformersmc:modmenu:11.0.3"
+
+	// HTTP Client for API calls
+	implementation 'com.google.code.gson:gson:2.10.1'
+	
+	// Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}"}
+	}
+}
+
+// Load .env file if it exists
+def envFile = file('.env')
+def webhookUrl = ''
+if (envFile.exists()) {
+	envFile.eachLine { line ->
+		if (line.startsWith('DISCORD_WEBHOOK_URL=')) {
+			webhookUrl = line.substring('DISCORD_WEBHOOK_URL='.length())
+		}
+	}
+}
+
+tasks.register('uploadToDiscord', Exec) {
+	dependsOn remapJar
+	def jarFile = file("build/libs/${project.base.archivesName.get()}-${project.version}.jar")
+	
+	onlyIf {
+		if (!envFile.exists() || webhookUrl.isEmpty()) {
+			println "Discord webhook URL not configured in .env file"
+			return false
+		}
+		return true
+	}
+	
+	doFirst {
+		if (!jarFile.exists()) {
+			throw new GradleException("JAR file not found: ${jarFile}")
+		}
+	}
+	
+	commandLine 'curl', '-F', "content=✅  **Build Complete!** New JAR file ready:",
+		'-F', "file=@${jarFile.absolutePath}",
+		webhookUrl
+	
+	doLast {
+		println "Uploaded ${jarFile.name} to Discord"
+	}
+}
+
+remapJar.finalizedBy uploadToDiscord
